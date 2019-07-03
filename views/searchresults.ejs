@@ -1,0 +1,62 @@
+<% include ./partials/header %>
+<h3>
+	Showing Results for <%=searchkeyword %>
+</h3>
+<hr>
+<div class='result'>
+
+	<div class='container'>
+		<% results.forEach(function(val){ %>
+		<div class='jumbotron'>
+			<div class='row'>
+			
+				
+			
+		<div class='col-lg-12'>
+			<div class="col-sm-4">
+			<img style='width:30%;'src="<%=val.productBaseInfoV1.imageUrls["400x400"]%>">
+			</div>
+           <div class="col-sm-8">
+			   <div class='col-sm-6'>
+			   
+			 <strong> <h4 style='font-weight:bold;'>
+				  
+			   <%=val.productBaseInfoV1.title %>
+				   
+				   </h4>
+				 </strong>
+				 
+		  <% var specs=val.categorySpecificInfoV1.keySpecs; %>
+	  <% specs.forEach(function(spec) {%>
+		<p style='font-size:15px;'>
+			  <%=spec%>
+	  </p>
+	 <% })%> </div>
+			   <div class='col-sm-6'>
+				   <h3 style='text-align:center;'> Price : 
+	<%=val.productBaseInfoV1.flipkartSpecialPrice.amount %> <%=val.productBaseInfoV1.flipkartSpecialPrice.currency %>                    <% var offers=val.productBaseInfoV1.offers; %>
+					   </h3>
+				   <% offers.forEach(function(offer){%>
+				  <p style="font-size:15px;">
+					   <%=offer%>
+				   </p>
+					
+				   
+				   <%}) %>
+					   <a style="margin-top:50px;"class='btn btn-lg btn-success' href="<%= val.productBaseInfoV1.productUrl%>">BUY NOW</a>
+				   
+				  
+			   </div>
+			
+			</div>
+			
+				</div>
+			</div>
+		</div>
+			
+		<hr>
+<% })%>
+		
+	</div>
+	</div>	
+<% include ./partials/footer %>
