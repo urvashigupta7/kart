@@ -44,7 +44,7 @@ app.get('/:type',function(req,res)
 	
 
 });
-app.listen(3000,function()
+app.listen(process.env.POST,process.env.IP,function()
 		  {
 	console.log('server has started');
 });
